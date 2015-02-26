@@ -1,0 +1,17 @@
+<?php
+
+
+/*
+ * Tell Drupal about the field widget
+*/
+function auto_ref_field_widget_info() {
+    return array(
+        'auto_ref_field_widget' => array(
+          'label' => t('Auto Reference'),
+          'field types' => array('entityreference'),
+            'behaviors' => array(
+              'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+            )
+        ),
+    );    
+}
