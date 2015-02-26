@@ -1,0 +1,5 @@
+name = Auto References
+description = Provides a auto references tools to opcvm cotation.
+core = 7.x
+package = Custom
+dependencies[] = entityreferences 
