@@ -3,3 +3,4 @@ description = Provides a auto references tools to opcvm cotation.
 core = 7.x
 package = Fields
 dependencies[] = entityreference
+version = "7.x-1.0.0-dev"
