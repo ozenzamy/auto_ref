@@ -15,3 +15,18 @@ function auto_ref_field_widget_info() {
         ),
     );    
 }
+
+
+/*
+ * Tell Drupal how to display your widget
+*/
+function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langcode,$items,$delta,$element) {
+   
+   // Ensure that the entity target type exists before displaying the widget.
+   $entity_info = entity_get_info($field['settings']['target_type']);
+
+   if (empty($entity_info)){
+    return;
+   }
+
+}
