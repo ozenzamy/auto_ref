@@ -32,6 +32,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
    $entity_type = $instance['entity_type'];
    $entity = isset($element['#entity']) ? $element['#entity'] : NULL;
    $handler = entityreference_get_selection_handler($field, $instance, $entity_type, $entity);
+   
    if ($instance['widget']['type'] == 'auto_ref_field_widget'){
        $entity_ids = array();
        $entity_labels = array();
@@ -53,7 +54,18 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         $entity_labels[] = $key;
        }
 
-       krumo($entity_labels);
+       $element += array(
+        '#type' => 'textfield',
+        '#title' => t('AutoReference TextField'),
+        '#default_value' => ' ',
+        #'#autocomplete_path' => $autocomplete_path,
+        '#size' => $instance['widget']['settings']['size'],
+        #'#element_validate' => array('_entityreference_auto_ref_validate'),
+       );
+
+       krumo($entities);
+       return array('target_id' => $element); 
+
    }
 
 }
