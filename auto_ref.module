@@ -63,7 +63,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
 
-       krumo($element);
+       krumo($entity_info);
        return array('target_id' => $element); 
 
    }
