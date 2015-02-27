@@ -55,31 +55,12 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
        }
 
        $element += array(
-        '#type' => 'textfield',
-        '#title' => t('AutoReference TextField'),
-        '#default_value' => '',
+        '#type' => 'hidden',
         #'#autocomplete_path' => $autocomplete_path,
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
 
-      $date = '2014-03-26';
-      $date = strtotime("$date");
-      $date = date('Y-m-d', strtotime('-2 year', $date));
-      $ref = 210;
-      $query = db_select('field_data_field_cot_ref', 'cot_ref');
-      $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
-      $query->fields('cot_ref', array('entity_id'))
-            ->condition("cot_ref.field_cot_ref_target_id", $ref, '=')
-            ->condition("date_ref.field_cot_date_value", "$date", '<=')
-            ->orderBy('date_ref.field_cot_date_value', 'DESC')
-            ->range(0,1);
-      
-      $result = $query->execute();
-      foreach ($result as $record) {
-      
-          krumo($record);
-      } 
        return array('target_id' => $element); 
 
    }
