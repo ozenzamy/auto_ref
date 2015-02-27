@@ -69,6 +69,6 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
    }
 }
    
-function auto_ref_entity_presave(&$entity, $type){
+function auto_ref_entity_presave($entity, $type){
    	 $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] = 15408; 
 }
