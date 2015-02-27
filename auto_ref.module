@@ -69,6 +69,8 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
    }
 }
    
-function auto_ref_webform_submission_presave($node, &$submission){
-	$submission->data[5]['value'][0] = 15407;
+function auto_ref_entity_presave(&$entity, $type){
+   if($entity->type == 'cotation'){
+   	 $entity->field_autoref['und'][0]['target_id'] = 15408; 
+   }
 }
