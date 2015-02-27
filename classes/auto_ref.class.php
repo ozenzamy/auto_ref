@@ -8,7 +8,5 @@
 */
 class AutoRef 
 {
-	public static function getReference(){
-		
-	}
+	
 }
