@@ -76,8 +76,10 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
             ->range(0,1);
       
       $result = $query->execute();
-
-       krumo($result);
+      foreach ($result as $record) {
+      
+          krumo($record);
+      } 
        return array('target_id' => $element); 
 
    }
