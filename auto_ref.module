@@ -86,7 +86,7 @@ function auto_ref_entity_presave($entity, $type){
             ->range(0,1);
       $result = $query->execute();
       foreach ($result as $record) {
-         $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] => $record->entity_id,
+         $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] => $record->entity_id;
       }
      
     // $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] = 15408;
