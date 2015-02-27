@@ -70,10 +70,11 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 }
    
 function auto_ref_entity_presave($entity, $type){
-	 /* $date = $element['#entity']->field_cot_date['und'][0]['value'];
+	   
+	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
       $date = strtotime("$date");
       $date = date('Y-m-d', strtotime('-2 year', $date));
-      $ref = $element['#entity']->field_cot_ref['und'][0]['target_id'];
+      $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'];
       
        // Create an object of type SelectQuery
       $query = db_select('field_data_field_cot_ref', 'cot_ref');
@@ -87,8 +88,8 @@ function auto_ref_entity_presave($entity, $type){
       foreach ($result as $record) {
          $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] => $record->entity_id,
       }
-     */  
+     
 
-     $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] = 15408;
+    // $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] = 15408;
    	 
 }
