@@ -70,7 +70,5 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 }
    
 function auto_ref_entity_presave(&$entity, $type){
-   if($entity->type == 'cotation'){
-   	 $entity->field_autoref['und'][0]['target_id'] = 15408; 
-   }
+   	 $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] = 15408; 
 }
