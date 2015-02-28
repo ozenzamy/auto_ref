@@ -9,9 +9,12 @@ function auto_ref_field_widget_info() {
         'auto_ref_field_widget' => array(
           'label' => t('Auto Reference'),
           'field types' => array('entityreference'),
-            'behaviors' => array(
-              'multiple values' => FIELD_BEHAVIOR_DEFAULT,
-            )
+          'behaviors' => array(
+             'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+           ),
+          'settings' => array(
+             'duration' => '1ans',
+           ),
         ),
     );    
 }
