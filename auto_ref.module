@@ -22,7 +22,17 @@ function auto_ref_field_widget_info() {
 */
 
 function auto_ref_field_widget_settings_form($field, $instance){
-	krumo($instance);
+	$form['duration'] = array(
+      '#type' => 'select',
+      '#title' => t('Duration'),
+      '#options' => array(
+      	 '1ans' => '1ans', 
+      	 '2ans' => '2ans', 
+      	 '3ans' => '3ans', 
+      	 '4ans' => '4ans'),
+	);
+
+	return $form;
 }
 
 
