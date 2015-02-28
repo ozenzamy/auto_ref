@@ -30,6 +30,7 @@ function auto_ref_field_widget_settings_form($field, $instance){
       	 '2ans' => '2ans', 
       	 '3ans' => '3ans', 
       	 '4ans' => '4ans'),
+      '#weight' => -30,
 	);
 
 	return $form;
