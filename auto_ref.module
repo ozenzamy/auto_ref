@@ -22,7 +22,7 @@ function auto_ref_field_widget_info() {
 */
 
 function auto_ref_field_widget_settings_form($field, $instance){
-	$field['settings']['duration'] = '1ans';
+	$field['settings']['duration'] = '2ans';
 	$form['duration'] = array(
       '#type' => 'select',
       '#title' => t('Duration'),
