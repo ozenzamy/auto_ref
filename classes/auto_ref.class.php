@@ -8,7 +8,7 @@
 */
 class AutoRef 
 {
-   public private $duration;
+   private $duration;
 
    public static function getDuration(){
    	 return $this->duration;
