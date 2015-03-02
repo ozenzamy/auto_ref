@@ -107,7 +107,7 @@ function auto_ref_entity_presave($entity, $type){
 
 	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
       $date = strtotime("$date");
-      $date = date('Y-m-d', strtotime('-2 years', $date));
+      $date = date('Y-m-d', strtotime('-2 year', $date));
       $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'];
      
        $query = db_select('field_data_field_cot_ref', 'cot_ref');
