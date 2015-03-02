@@ -34,8 +34,6 @@ function auto_ref_field_widget_settings_form($field, $instance){
       '#default_value' => $field['settings']['duration'],
       '#weight' => -30,
 	);
-    
-    krumo($field);
 	return $form;
 }
 
@@ -83,7 +81,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
-
+       krumo($field);
        return array('target_id' => $element); 
 
    }
