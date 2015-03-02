@@ -42,7 +42,7 @@ function auto_ref_field_widget_settings_form($field, $instance){
       	 '-2 year' => '2 ans',
       	 '-3 year' => '3 ans',
       	 '-5 year' => '5 ans'),
-      '#default_value' => $widget['settings']['duration'],
+      '#default_value' => $instance['widget']['settings']['duration'],
       '#weight' => -30,
 	);
 	return $form;
