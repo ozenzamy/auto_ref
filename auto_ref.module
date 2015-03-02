@@ -15,7 +15,7 @@ function auto_ref_field_widget_info() {
              'multiple values' => FIELD_BEHAVIOR_DEFAULT,
            ),
           'settings' => array(
-          	 'duration' => '-1 day'
+          	 'duration' => '-2 year',
            ),
         ),
     );    
@@ -32,18 +32,10 @@ function auto_ref_field_widget_settings_form($field, $instance){
       '#type' => 'select',
       '#title' => t('Duration'),
       '#options' => array(
-      	 '2ans' => '2year', 
-      	 /*'1w' => '-1 week', 
-      	 '1m' => '-1 month', 
-      	 '3m' => '-3 month',
-      	 '6m' => '-6 month',
-      	 '1y' => '-1 year',
-      	 '18m' => '-18 month',
-      	 '2y' => '-2 year',
-      	 '3y' => '-3 year',
-      	 '5y' => '-5 year'
-      	 */
-      	 ),
+      	 '1ans' => '1ans', 
+      	 '2ans' => '2ans', 
+      	 '3ans' => '3ans', 
+      	 '4ans' => '4ans'),
       '#default_value' => $GLOBALS['settings']['duration'],
       '#weight' => -30,
 	);
@@ -94,6 +86,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
+       krumo($entity);
        return array('target_id' => $element); 
 
    }
@@ -119,3 +112,15 @@ function auto_ref_entity_presave($entity, $type){
           $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
       } 	 
 }
+
+
+ /*'1w' => '-1 week', 
+      	 '1m' => '-1 month', 
+      	 '3m' => '-3 month',
+      	 '6m' => '-6 month',
+      	 '1y' => '-1 year',
+      	 '18m' => '-18 month',
+      	 '2y' => '-2 year',
+      	 '3y' => '-3 year',
+      	 '5y' => '-5 year'
+      	 */
