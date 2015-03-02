@@ -1,10 +1,5 @@
 <?php
 
-$path = drupal_get_path('module', 'auto_ref') . '/classes/auto_ref.class.php';
-require_once($path);
-
-
-$widget = array();
 
 /*
  * Tell Drupal about the field widget
@@ -17,9 +12,6 @@ function auto_ref_field_widget_info() {
           'behaviors' => array(
              'multiple values' => FIELD_BEHAVIOR_DEFAULT,
            ),
-          'settings' => array(
-          	 'duration' => '-2 year',
-           ),
         ),
     );    
 }
@@ -30,24 +22,16 @@ function auto_ref_field_widget_info() {
 */
 
 function auto_ref_field_widget_settings_form($field, $instance){
-	array_push($widget, $instance['widget']);
-    variable_set('duration', $instance['widget']);
-
+	$field['settings']['duration'] = '2ans';
 	$form['duration'] = array(
       '#type' => 'select',
       '#title' => t('Duration'),
       '#options' => array(
-      	 '-1 day' => '-1 day',
-      	 '-1 week' => '-1 week', 
-      	 '-1 month' => '-1 month', 
-      	 '-3 month' => '-3 month',
-      	 '-6 month' => '-6 month',
-      	 '-1 year' => '-1 year',
-      	 '-18 month' => '-18 month',
-      	 '-2 year' => '-2 year',
-      	 '-3 year' => '-3 year',
-      	 '-5 year' => '-5 year'),
-      '#default_value' => $instance['widget']['settings']['duration'],
+      	 '1ans' => '1ans', 
+      	 '2ans' => '2ans', 
+      	 '3ans' => '3ans', 
+      	 '4ans' => '4ans'),
+      '#default_value' => $field['settings']['duration'],
       '#weight' => -30,
 	);
 	return $form;
@@ -97,41 +81,29 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
+       krumo($field);
        return array('target_id' => $element); 
 
    }
 }
-
    
 function auto_ref_entity_presave($entity, $type){
-
+	   
 	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
       $date = strtotime("$date");
       $date = date('Y-m-d', strtotime('-2 year', $date));
       $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'];
-     
-       $query = db_select('field_data_field_cot_ref', 'cot_ref');
-       $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
-       $query->fields('cot_ref', array('entity_id'))
+      
+      $query = db_select('field_data_field_cot_ref', 'cot_ref');
+      $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
+      $query->fields('cot_ref', array('entity_id'))
             ->condition("cot_ref.field_cot_ref_target_id", $ref, '=')
             ->condition("date_ref.field_cot_date_value", "$date", '<=')
             ->orderBy('date_ref.field_cot_date_value', 'DESC')
             ->range(0,1);
       
-       $result = $query->execute();
-       foreach ($result as $record) {
+      $result = $query->execute();
+      foreach ($result as $record) {
           $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
-       } 	 
+      } 	 
 }
-
-
- /*'1w' => '-1 week', 
-      	 '1m' => '-1 month', 
-      	 '3m' => '-3 month',
-      	 '6m' => '-6 month',
-      	 '1y' => '-1 year',
-      	 '18m' => '-18 month',
-      	 '2y' => '-2 year',
-      	 '3y' => '-3 year',
-      	 '5y' => '-5 year'
-      	 */
