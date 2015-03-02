@@ -123,7 +123,7 @@ function auto_ref_entity_presave($entity, $type){
         if(strpos($key, 'autoref')) {
          $key = explode('_', $key);
          $key = '-' . $key[2] . ' ' . $key[3];
-         $date = date('Y-m-d', strtotime("$key", $date));
+         $date = date('Y-m-d', strtotime("-2 year", $date));
           $query = db_select('field_data_field_cot_ref', 'cot_ref');
           $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
           $query->fields('cot_ref', array('entity_id'))
