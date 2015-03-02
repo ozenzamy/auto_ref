@@ -3,6 +3,9 @@
 $path = drupal_get_path('module', 'auto_ref') . '/classes/auto_ref.class.php';
 require_once($path);
 
+
+$widget = array();
+
 /*
  * Tell Drupal about the field widget
 */
@@ -27,7 +30,7 @@ function auto_ref_field_widget_info() {
 */
 
 function auto_ref_field_widget_settings_form($field, $instance){
-	AutoRef::setDuration($instance['widget']['settings']['duration']);
+	array_push($widget, $instance['widget']['settings']['duration']);
 	$form['duration'] = array(
       '#type' => 'select',
       '#title' => t('Duration'),
@@ -92,7 +95,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
-       krumo(AutoRef::getDuration());
+       krumo($widget);
        return array('target_id' => $element); 
 
    }
