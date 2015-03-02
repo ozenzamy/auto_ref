@@ -1,8 +1,7 @@
 <?php
 
-
-$widget = null;
-
+$path = drupal_get_path('module', 'auto_ref/classes/auto_ref.class.php');
+require_once($path);
 /*
  * Tell Drupal about the field widget
 */
