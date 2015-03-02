@@ -100,6 +100,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
        $attr_entity = get_object_vars($entity);
        foreach ($attr_entity as $key => $value) {
         if(strpos($key, 'autoref')) {
+         $key = explode('_', $key);
          krumo($key);
         }
      
@@ -118,11 +119,11 @@ function auto_ref_entity_presave($entity, $type){
       $date = date('Y-m-d', strtotime(AutoRef::getDuration(), $date));
       $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'];
       
-      /*foreach ($attr_entity as $key => $value) {
+      foreach ($attr_entity as $key => $value) {
         if ($value == 1) {
          echo $key;
         }
-      }*/
+      }
        $query = db_select('field_data_field_cot_ref', 'cot_ref');
        $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
        $query->fields('cot_ref', array('entity_id'))
