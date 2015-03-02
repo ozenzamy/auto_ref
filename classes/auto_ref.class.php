@@ -14,7 +14,7 @@ class AutoRef
    	 return $this->duration;
    } 	
 
-   public static setDuration($value){
+   public static function setDuration($value){
    	 $this->duration = $value;
    }
 }
