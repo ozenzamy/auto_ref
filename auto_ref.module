@@ -27,7 +27,7 @@ function auto_ref_field_widget_info() {
 */
 
 function auto_ref_field_widget_settings_form($field, $instance){
-	$GLOBALS['widget'] = $instance['widget'];
+	variable_set('duration', $instance['widget']);
 	$form['duration'] = array(
       '#type' => 'select',
       '#title' => t('Duration'),
@@ -92,7 +92,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
-       krumo($GLOBALS['widget']);
+       krumo(variable_get('duration'));
        return array('target_id' => $element); 
 
    }
