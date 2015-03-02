@@ -15,7 +15,7 @@ function auto_ref_field_widget_info() {
              'multiple values' => FIELD_BEHAVIOR_DEFAULT,
            ),
           'settings' => array(
-          	 'duration' => '-2 year',
+          	 'duration' => '-1 day'
            ),
         ),
     );    
