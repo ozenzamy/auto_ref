@@ -32,6 +32,7 @@ function auto_ref_field_widget_settings_form($field, $instance){
       '#type' => 'select',
       '#title' => t('Duration'),
       '#options' => array(
+      	 '-1 day' => 'Un jour',
       	 '-1 week' => 'Une semaine', 
       	 '-1 month' => 'Un mois', 
       	 '-3 month' => '3 mois',
