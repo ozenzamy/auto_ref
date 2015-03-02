@@ -8,13 +8,13 @@
 */
 class AutoRef 
 {
-   private $duration;
+   private static $duration;
 
    public static function getDuration(){
-   	 return $this->duration;
+   	 return self::$duration;
    } 	
 
    public static function setDuration($value){
-   	 $this->duration = $value;
+   	 self::$duration = $value;
    }
 }
