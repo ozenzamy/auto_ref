@@ -32,16 +32,16 @@ function auto_ref_field_widget_settings_form($field, $instance){
       '#type' => 'select',
       '#title' => t('Duration'),
       '#options' => array(
-      	 '-1 day' => 'Un jour',
-      	 '-1 week' => 'Une semaine', 
-      	 '-1 month' => 'Un mois', 
-      	 '-3 month' => '3 mois',
-      	 '-6 month' => '6 mois',
-      	 '-1 year' => '1 ans',
-      	 '-18 month' => '18 mois',
-      	 '-2 year' => '2 ans',
-      	 '-3 year' => '3 ans',
-      	 '-5 year' => '5 ans'),
+      	 '-1 day' => '-1 day',
+      	 '-1 week' => '-1 week', 
+      	 '-1 month' => '-1 month', 
+      	 '-3 month' => '-3 month',
+      	 '-6 month' => '-6 month',
+      	 '-1 year' => '-1 year',
+      	 '-18 month' => '-18 month',
+      	 '-2 year' => '-2 year',
+      	 '-3 year' => '-3 year',
+      	 '-5 year' => '-5 year'),
       '#default_value' => $instance['widget']['settings']['duration'],
       '#weight' => -30,
 	);
@@ -92,6 +92,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
+       krumo($widget);
        return array('target_id' => $element); 
 
    }
