@@ -32,8 +32,8 @@ function auto_ref_field_widget_settings_form($field, $instance){
       '#type' => 'select',
       '#title' => t('Duration'),
       '#options' => array(
-      	 '1d' => '-1 day', 
-      	 '1w' => '-1 week', 
+      	 '2ans' => '2year', 
+      	 /*'1w' => '-1 week', 
       	 '1m' => '-1 month', 
       	 '3m' => '-3 month',
       	 '6m' => '-6 month',
@@ -42,6 +42,7 @@ function auto_ref_field_widget_settings_form($field, $instance){
       	 '2y' => '-2 year',
       	 '3y' => '-3 year',
       	 '5y' => '-5 year'
+      	 */
       	 ),
       '#default_value' => $GLOBALS['settings']['duration'],
       '#weight' => -30,
