@@ -1,6 +1,8 @@
 <?php
 
 
+$widget = null;
+
 /*
  * Tell Drupal about the field widget
 */
@@ -13,7 +15,7 @@ function auto_ref_field_widget_info() {
              'multiple values' => FIELD_BEHAVIOR_DEFAULT,
            ),
           'settings' => array(
-          	 'duration' => '2ans',
+          	 'duration' => '-2 year',
            ),
         ),
     );    
@@ -25,7 +27,7 @@ function auto_ref_field_widget_info() {
 */
 
 function auto_ref_field_widget_settings_form($field, $instance){
-	$instance['instance']['duration'] = '2ans';
+	$GLOBALS['widget'] = $instance['widget'];
 	$form['duration'] = array(
       '#type' => 'select',
       '#title' => t('Duration'),
@@ -34,7 +36,7 @@ function auto_ref_field_widget_settings_form($field, $instance){
       	 '2ans' => '2ans', 
       	 '3ans' => '3ans', 
       	 '4ans' => '4ans'),
-      '#default_value' => $instance['widget']['settings']['duration'],
+      '#default_value' => $GLOBALS['settings']['duration'],
       '#weight' => -30,
 	);
 	return $form;
@@ -94,7 +96,7 @@ function auto_ref_entity_presave($entity, $type){
 	   
 	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
       $date = strtotime("$date");
-      $date = date('Y-m-d', strtotime('-2 year', $date));
+      $date = date('Y-m-d', strtotime("$GLOBALS['widget']", $date));
       $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'];
       
       $query = db_select('field_data_field_cot_ref', 'cot_ref');
