@@ -101,6 +101,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
        foreach ($attr_entity as $key => $value) {
         if(strpos($key, 'autoref')) {
          $key = explode('_', $key);
+         $key = '-' + $key[2] + ' ' + $key[3];
          krumo($key);
         }
      
