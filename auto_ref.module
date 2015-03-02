@@ -97,7 +97,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
-       krumo($entity);
+       krumo(get_object_vars($entity));
        return array('target_id' => $element); 
 
    }
@@ -105,7 +105,9 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 
    
 function auto_ref_entity_presave($entity, $type){
-	   
+
+	  $duration = get_object_vars($entity);
+	     
 	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
       $date = strtotime("$date");
       $date = date('Y-m-d', strtotime(AutoRef::getDuration(), $date));
