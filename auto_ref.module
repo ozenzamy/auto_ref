@@ -117,26 +117,28 @@ function auto_ref_entity_presave($entity, $type){
 	  $attr_entity = get_object_vars($entity);
 	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
       $date = strtotime("$date");
-      $date = date('Y-m-d', strtotime(AutoRef::getDuration(), $date));
       $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'];
       
       foreach ($attr_entity as $key => $value) {
-        if ($value == 1) {
-         echo $key;
-        }
-      }
-       $query = db_select('field_data_field_cot_ref', 'cot_ref');
-       $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
-       $query->fields('cot_ref', array('entity_id'))
+        if(strpos($key, 'autoref')) {
+         $key = explode('_', $key);
+         $key = '-' . $key[2] . ' ' . $key[3];
+         $date = date('Y-m-d', strtotime($key, $date));
+          $query = db_select('field_data_field_cot_ref', 'cot_ref');
+          $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
+          $query->fields('cot_ref', array('entity_id'))
             ->condition("cot_ref.field_cot_ref_target_id", $ref, '=')
             ->condition("date_ref.field_cot_date_value", "$date", '<=')
             ->orderBy('date_ref.field_cot_date_value', 'DESC')
             ->range(0,1);
       
-       $result = $query->execute();
-       foreach ($result as $record) {
-          $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
-       } 	 
+          $result = $query->execute();
+          foreach ($result as $record) {
+           $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
+          } 	 
+        }
+      }
+    
 }
 
 
