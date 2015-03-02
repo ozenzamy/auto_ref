@@ -12,6 +12,9 @@ function auto_ref_field_widget_info() {
           'behaviors' => array(
              'multiple values' => FIELD_BEHAVIOR_DEFAULT,
            ),
+          'settings' => array(
+          	 'duration' => '2ans',
+           ),
         ),
     );    
 }
