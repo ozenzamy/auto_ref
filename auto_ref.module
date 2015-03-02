@@ -27,7 +27,7 @@ function auto_ref_field_widget_info() {
 */
 
 function auto_ref_field_widget_settings_form($field, $instance){
-	$GLOBALS['widget'] = $instance['widget'];
+	$widget = $instance['widget'];
 	$form['duration'] = array(
       '#type' => 'select',
       '#title' => t('Duration'),
@@ -41,7 +41,7 @@ function auto_ref_field_widget_settings_form($field, $instance){
       	 '-2 year' => '2 ans',
       	 '-3 year' => '3 ans',
       	 '-5 year' => '5 ans'),
-      '#default_value' => $GLOBALS['settings']['duration'],
+      '#default_value' => $widget['settings']['duration'],
       '#weight' => -30,
 	);
 	return $form;
@@ -100,7 +100,7 @@ function auto_ref_entity_presave($entity, $type){
 	   
 	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
       $date = strtotime("$date");
-      $date = date('Y-m-d', strtotime($widget, $date));
+      $date = date('Y-m-d', strtotime($widget['settings']['duration'], $date));
       $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'];
       
       $query = db_select('field_data_field_cot_ref', 'cot_ref');
