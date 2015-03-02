@@ -27,7 +27,7 @@ function auto_ref_field_widget_info() {
 */
 
 function auto_ref_field_widget_settings_form($field, $instance){
-	$widget = $instance['widget'];
+	$GLOBALS['widget'] = $instance['widget'];
 	$form['duration'] = array(
       '#type' => 'select',
       '#title' => t('Duration'),
@@ -92,7 +92,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
-       krumo($widget);
+       krumo($GLOBALS['widget']);
        return array('target_id' => $element); 
 
    }
@@ -102,7 +102,7 @@ function auto_ref_entity_presave($entity, $type){
 	   
 	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
       $date = strtotime("$date");
-      $date = date('Y-m-d', strtotime($widget['settings']['duration'], $date));
+      $date = date('Y-m-d', strtotime($GLOBALS['widget']['settings']['duration'], $date));
       $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'];
       
       $query = db_select('field_data_field_cot_ref', 'cot_ref');
