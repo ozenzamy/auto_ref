@@ -99,9 +99,9 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
        );
        $attr_entity = get_object_vars($entity);
        foreach ($attr_entity as $key => $value) {
-        if (strpos($key,'autoref') === true) {
+        
          krumo($key);
-        }
+     
        }
        return array('target_id' => $element); 
 
