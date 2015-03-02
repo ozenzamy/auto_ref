@@ -97,36 +97,14 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
-       krumo($items);
+       krumo($entity);
        return array('target_id' => $element); 
 
    }
 }
 
-function auto_ref_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items){
-	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
-      $date = strtotime("$date");
-      $date = date('Y-m-d', strtotime($instance['widget']['settings']['duration'], $date));
-      $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'];
-        $query = db_select('field_data_field_cot_ref', 'cot_ref');
-      $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
-      $query->fields('cot_ref', array('entity_id'))
-            ->condition("cot_ref.field_cot_ref_target_id", $ref, '=')
-            ->condition("date_ref.field_cot_date_value", "$date", '<=')
-            ->orderBy('date_ref.field_cot_date_value', 'DESC')
-            ->range(0,1);
-
-      $result = $query->execute();
-      foreach ($result as $record) {
-      	foreach ($items as $delta => $item) {
-      	 if (isset($item['target_id'])) {	
-          $items[$delta]['target_id'] = $entity->field_autoref[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
-         } 
-        }
-      }       
-}
    
-/*function auto_ref_entity_presave($entity, $type){
+function auto_ref_entity_presave($entity, $type){
 	   
 	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
       $date = strtotime("$date");
@@ -147,7 +125,7 @@ function auto_ref_field_presave($entity_type, $entity, $field, $instance, $langc
       } 	 
 }
 
-*/
+
  /*'1w' => '-1 week', 
       	 '1m' => '-1 month', 
       	 '3m' => '-3 month',
