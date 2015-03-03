@@ -8,7 +8,7 @@
 */
 class AutoRef 
 {
-  public static function autoRef_loader($entity, $type, $duration){
+  public static function autoRef_loader($entity, $duration, $field){
 	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
       $date = strtotime("$date");
       $date = date('Y-m-d', strtotime("$duration", $date));
@@ -24,7 +24,7 @@ class AutoRef
       
       $result = $query->execute();
       foreach ($result as $record) {
-          $entity->field_2_ans[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
+          $entity->$field[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
       } 	 
  
   }

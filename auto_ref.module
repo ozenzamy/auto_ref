@@ -70,11 +70,12 @@ function auto_ref_entity_presave($entity, $type){
 	 $entity_key = array_keys(get_object_vars($entity));
        for ($i=0; $i < count($entity_key) ; $i++) { 
        	 if(strpos($entity_key[$i], 'field_autoref_') !== false){
+       	   $field = $key;
            $key = explode('__', $entity_key[$i]);
            $key = explode('_', $key[1]);
            $key = implode(' ', $key);
            $key = '-' . $key;
-           AutoRef::autoRef_loader($entity, $type, $key);
+           AutoRef::autoRef_loader($entity, $key, $field);
        	 }
        }
 }
