@@ -61,6 +61,18 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
+        $entity_key = array_keys(get_object_vars($entity));
+       for ($i=0; $i < count($entity_key) ; $i++) { 
+       	 if(strpos($entity_key[$i], 'field_autoref_') !== false){
+       	   $field = $key;
+           $key = explode('__', $entity_key[$i]);
+           $key = explode('_', $key[1]);
+           $key = implode(' ', $key);
+           $key = '-' . $key;
+           //AutoRef::autoRef_loader($entity, $key, $field);
+           krumo($entity->$field[LANGUAGE_NONE][0]['target_id']);
+       	 }
+       }
        return array('target_id' => $element); 
 
    }
