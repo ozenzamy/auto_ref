@@ -11,7 +11,7 @@ class AutoRef
   public static function autoRef_loader($entity, $duration, $field){
 	  $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
       $date = strtotime("$date");
-      $date = date('Y-m-d', strtotime("$duration", $date));
+      $date = date('Y-m-d', strtotime($duration, $date));
       $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'];
       
       $query = db_select('field_data_field_cot_ref', 'cot_ref');
