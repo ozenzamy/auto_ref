@@ -70,7 +70,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
            $key = implode(' ', $key);
            $key = '-' . $key;
            //AutoRef::autoRef_loader($entity, $key, $field);
-           krumo($entity->$field[LANGUAGE_NONE][0]['target_id']);
+           krumo($entity);
        	 }
        }
        return array('target_id' => $element); 
