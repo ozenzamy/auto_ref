@@ -60,7 +60,8 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
-       krumo(get_object_vars($entity));
+       $entity_key = array_key(get_object_vars($entity));
+       krumo($entity_key);
        return array('target_id' => $element); 
 
    }
