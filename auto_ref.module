@@ -106,7 +106,8 @@ function auto_ref_entity_presave($entity, $type){
 		          $entity->{$field}[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
 		      }
 		      unset($query);
-		      unset($result); 	 
+		      unset($result);
+		      unset($key);  	 
        	 }
        }
 }
