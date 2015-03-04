@@ -60,7 +60,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
        );
      
        //krumo(entity_load($entity_type));
-        $entity_key = array_keys(get_object_vars($entity));
+        /*$entity_key = array_keys(get_object_vars($entity));
         krumo(count($entity_key));
         for ($i=0; $i < count($entity_key) ; $i++) { 
        	 if(strpos($entity_key[$i], 'field_autoref_') !== false){
@@ -70,7 +70,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 	          $key = implode(' ', $key);
 	          $key = '-' . $key;
           //krumo();
-        }}
+        }}*/
         
       
        return array('target_id' => $element); 
@@ -104,7 +104,9 @@ function auto_ref_entity_presave($entity, $type){
 		      $result = $query->execute();
 		      foreach ($result as $record) {
 		          $entity->{$field}[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
-		      } 	 
+		      }
+		      unset($query);
+		      unset($result); 	 
        	 }
        }
 }
