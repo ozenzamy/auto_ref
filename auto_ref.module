@@ -61,7 +61,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
      
        //krumo(entity_load($entity_type));
         $entity_key = array_keys(get_object_vars($entity));
-        krumo($entity_key);
+        krumo(count($entity_key));
         for ($i=0; $i < count($entity_key) ; $i++) { 
        	 if(strpos($entity_key[$i], 'field_autoref_') !== false){
 	       	  $field = $entity_key[$i];
