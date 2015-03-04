@@ -68,7 +68,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 	          $key = explode('_', $key[1]);
 	          $key = implode(' ', $key);
 	          $key = '-' . $key;
-          krumo($field);
+          krumo($entity_key[$i]);
         }}
         
       
