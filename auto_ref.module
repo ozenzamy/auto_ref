@@ -77,7 +77,7 @@ function auto_ref_entity_presave($entity, $type){
 	          $key = implode(' ', $key);
 	          $key = '-' . $key;
               
-              $date = date('Y-m-d', strtotime($key, $date));
+              $date = date('Y-m-d', strtotime("$key", $date));
 		      $query = db_select('field_data_field_cot_ref', 'cot_ref');
 		      $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
 		      $query->fields('cot_ref', array('entity_id'))
@@ -88,7 +88,7 @@ function auto_ref_entity_presave($entity, $type){
 		      
 		      $result = $query->execute();
 		      foreach ($result as $record) {
-		          $entity[$field][LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
+		          $entity->$field[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
 		      } 	 
        	 }
        }
