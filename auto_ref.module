@@ -59,10 +59,8 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
       list(, , $bundle) = entity_extract_ids($entity, $entity_type);
-       foreach (field_info_instance($entity_type, $bundle) as $field_name => $inst) {
-       	$field = field_info_field($field_name);
-       		krumo($field);
-       }
+       
+       		krumo(field_info_instance($entity_type, $bundle) );
       
        return array('target_id' => $element); 
 
