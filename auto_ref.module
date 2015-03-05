@@ -86,7 +86,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 		      
 		      $result = $query->execute();
 		      foreach ($result as $record) {
-		          $entity->$field[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
+		          krumo($record->entity_id);
 		      } 	 
        	 }
        }      
@@ -120,7 +120,7 @@ function auto_ref_entity_presave($entity, $type){
 		      
 		      $result = $query->execute();
 		      foreach ($result as $record) {
-		          $entity->$field[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
+		          $entity->{$field}[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
 		      } 	 
        	 }
        }
