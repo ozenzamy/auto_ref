@@ -1,4 +1,9 @@
 <?php
+
+$path = drupal_get_path('module', 'auto_ref') . '/classes/auto_ref.class.php';
+require_once($path);
+
+
 /*
  * Tell Drupal about the field widget
 */
@@ -68,8 +73,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 	          $key = explode('_', $key[1]);
 	          $key = implode(' ', $key);
 	          $key = '-' . $key;
-              krumo($key); 
-             /* $date = date('Y-m-d', strtotime("$key", $date));
+              $date = date('Y-m-d', strtotime($key, $date));
 		      $query = db_select('field_data_field_cot_ref', 'cot_ref');
 		      $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
 		      $query->fields('cot_ref', array('entity_id'))
@@ -79,7 +83,8 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 		            ->range(0,1);
 		      
 		      $result = $query->execute();
-		       foreach ($result as $record) {
+		      krumo($result);
+		      /* foreach ($result as $record) {
 		          krumo($record->entity_id);
 		      }*/
 		  }
