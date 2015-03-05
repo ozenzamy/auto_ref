@@ -83,10 +83,11 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 		            ->condition("cot_ref.field_cot_ref_target_id", $ref, '=')
 		            //->condition("date_ref.field_cot_date_value", "$date", '<=')
 		            ->orderBy('date_ref.field_cot_date_value', 'DESC')
-		            ->range(0, 10);
+		            ->range(0, 1);
 		      
 		      $result = $query->execute();
 		      foreach ($result as $record) {
+		      	 krumo($record->entity_id);
 		         krumo($record->field_cot_date_value);
 		      } 	 
        	 }
