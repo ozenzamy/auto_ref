@@ -79,7 +79,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 		      $query = db_select('field_data_field_cot_ref', 'cot_ref');
 		      $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
 		      $query->fields('cot_ref', array('entity_id'))
-		      $query->fields('date_ref', array('field_cot_date_value'))
+		            ->fields('date_ref', array('field_cot_date_value'))
 		            ->condition("cot_ref.field_cot_ref_target_id", $ref, '=')
 		            //->condition("date_ref.field_cot_date_value", "$date", '<=')
 		            ->orderBy('date_ref.field_cot_date_value', 'DESC')
