@@ -68,8 +68,8 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 	          $key = explode('_', $key[1]);
 	          $key = implode(' ', $key);
 	          $key = '-' . $key;
-              
-              $date = date('Y-m-d', strtotime("$key", $date));
+              krumo($key); 
+             /* $date = date('Y-m-d', strtotime("$key", $date));
 		      $query = db_select('field_data_field_cot_ref', 'cot_ref');
 		      $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
 		      $query->fields('cot_ref', array('entity_id'))
@@ -81,7 +81,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 		      $result = $query->execute();
 		       foreach ($result as $record) {
 		          krumo($record->entity_id);
-		      }
+		      }*/
 		  }
 		}
         
