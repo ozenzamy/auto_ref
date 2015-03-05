@@ -84,9 +84,9 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 		      
 		      $result = $query->execute();
 		      krumo($result);
-		      /* foreach ($result as $record) {
+		      foreach ($result as $record) {
 		          krumo($record->entity_id);
-		      }*/
+		      }
 		  }
 		}
         
