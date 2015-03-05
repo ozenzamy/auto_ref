@@ -82,7 +82,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 		      $query->fields('cot_ref', array('entity_id'))
 		            ->fields('date_ref', array('field_cot_date_value'))
 		            ->condition("cot_ref.field_cot_ref_target_id", $ref, '=')
-		            ->condition("date_ref.field_cot_date_value", "$date", '<=')
+		            ->condition("date_ref.field_cot_date_value", "$maxDate", '>=')
 		            ->orderBy('date_ref.field_cot_date_value', 'DESC');
 
 
