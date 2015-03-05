@@ -83,8 +83,9 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 		            ->range(0,1);
 		      
 		      $result = $query->execute();
-		      $pages = $result->fetchField();
-		      krumo($pages);
+		      foreach ($result as $record) {
+		          krumo($record->entity_id);
+		      }
 		  }
 		}
         
