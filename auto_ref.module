@@ -65,7 +65,6 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
        );
      
         $entity_key = array_keys(get_object_vars($entity));
-        $date = '2014-03-26';
          for ($i=0; $i < count($entity_key) ; $i++) { 
        	 if(strpos($entity_key[$i], 'field_autoref_') !== false){
 	       	  $field = $entity_key[$i];
@@ -73,6 +72,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 	          $key = explode('_', $key[1]);
 	          $key = implode(' ', $key);
 	          $key = '-' . $key;
+	          $date = '2014-03-26';
               $date = date('Y-m-d', strtotime("-2 year", $date));
 		      $query = db_select('field_data_field_cot_ref', 'cot_ref');
 		      $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
