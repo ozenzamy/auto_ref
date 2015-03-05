@@ -85,10 +85,10 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 		            ->condition("date_ref.field_cot_date_value", "$maxDate", '<=')
 		            ->orderBy('date_ref.field_cot_date_value', 'DESC');
 
-                		      
+
 		      $result = $query->execute();
 		      foreach ($result as $record) {
-		      	  if($record->field_cot_date_value <= $date){
+		      	  if($record->field_cot_date_value >= $date){
 		            krumo($record->entity_id);
 		            krumo($record->field_cot_date_value);
 		            break;
