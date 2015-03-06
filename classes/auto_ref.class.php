@@ -18,7 +18,7 @@ class AutoRef
             $key = implode(' ', $key);
             $key = '-' . $key;
 
-          $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'] ? $entity->field_cot_date[LANGUAGE_NONE][0]['value'] : date();
+          $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'] ? $entity->field_cot_date[LANGUAGE_NONE][0]['value'] : date('Y-m-d');
           $date = strtotime("$date");
           $date = date('Y-m-d', strtotime($key, $date));
           $maxDate = date('Y-m-d', strtotime('-6 years', $date));
