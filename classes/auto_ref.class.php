@@ -11,7 +11,7 @@ class AutoRef
   public static function autoRef_loader($entity){
 	     $entity_key = array_keys(get_object_vars($entity));
        for ($i=0; $i < count($entity_key) ; $i++) { 
-         if(strpos($entity_key[$i], 'field_autoref') !== false){
+         if(strpos($entity_key[$i], 'field_autoref_') !== false){
             $field = $entity_key[$i];
             $key = explode('__', $entity_key[$i]);
             $key = explode('_', $key[1]);
