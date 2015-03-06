@@ -18,11 +18,11 @@ class AutoRef
             $key = implode(' ', $key);
             $key = '-' . $key;
 
-              $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'];
+          $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'] ? $entity->field_cot_date[LANGUAGE_NONE][0]['value'] : date();
           $date = strtotime("$date");
           $date = date('Y-m-d', strtotime($key, $date));
           $maxDate = date('Y-m-d', strtotime('-6 years', $date));
-          $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'];
+          $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'] ? $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'] : $entity->nid;
           
           $query = db_select('field_data_field_cot_ref', 'cot_ref');
           $query->join('field_data_field_cot_date', 'date_ref', "cot_ref.entity_id = date_ref.entity_id");
