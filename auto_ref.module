@@ -19,6 +19,26 @@ function auto_ref_field_widget_info() {
 
 
 /*
+* Tell drupal to make settings to our widget
+*/
+function auto_ref_field_widget_settings_form($field, $instance){
+  $widget = $instance['widget'];
+  $settings = $widget['settings'];
+
+  if($widget['type'] == 'auto_ref_field_widget'){
+    $form['referenceField'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Reference Field'),
+      '#default_value' => $settings['referenceField'],
+      '#required' => TRUE
+    );
+  }
+
+  return $form;
+}
+
+
+/*
  * Tell Drupal how to display your widget
 */
 function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langcode,$items,$delta,$element) {
