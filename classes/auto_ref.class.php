@@ -42,4 +42,14 @@ class AutoRef
          }
        }
   }
+
+
+  public static function getAllEntity(){
+     $entity_type_options = array();
+      foreach (entity_get_info() as $entity_type => $entity_info) {
+       $entity_type_options[$entity_type] = $entity_info['label'];
+      }
+     return $entity_type_options; 
+  }
+
 }

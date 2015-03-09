@@ -30,8 +30,9 @@ function auto_ref_field_widget_settings_form($field, $instance){
 
   if($widget['type'] == 'auto_ref_field_widget'){
     $form['referenceField'] = array(
-      '#type' => 'textfield',
+      '#type' => 'select',
       '#title' => t('Reference Field'),
+      '#option' => AutoRef::getAllEntity(),
       '#default_value' => $settings['referenceField'],
       '#required' => TRUE
     );
