@@ -44,12 +44,9 @@ class AutoRef
   }
 
 
-  public static function getAllEntity(){
-     $entity_type_options = array();
-      foreach (entity_get_info() as $entity_type => $entity_info) {
-       $entity_type_options[$entity_type] = $entity_info['label'];
-      }
-     return $entity_type_options; 
+  public static function getAllpropriete(){
+     $entity_type_options = entity_get_all_property_info();
+     return array_keys($entity_type_options);
   }
 
     public static function getBundle($entity_type = NULL){
