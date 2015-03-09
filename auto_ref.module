@@ -22,12 +22,23 @@ function auto_ref_field_widget_info() {
 
 
 /*
-* Tell drupal to  update the field settings
+* Tell drupal to make settings to our widget
 */
-function auto_ref_field_update_instance($instance, $prior_instance){
+function auto_ref_field_widget_settings_form($field, $instance){
+  $widget = $instance['widget'];
+  $settings = $widget['settings'];
 
+  if($widget['type'] == 'auto_ref_field_widget'){
+    $form['referenceField'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Reference Field'),
+      '#default_value' => $settings['referenceField'],
+      '#required' => TRUE
+    );
+  }
+
+  return $form;
 }
-
 
 
 /*
@@ -73,7 +84,7 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
         '#size' => $instance['widget']['settings']['size'],
         #'#element_validate' => array('_entityreference_auto_ref_validate'),
        );
-       krumo($instance);
+       krumo(field_info_instances($entity_type));
        return array('target_id' => $element); 
 
    }
