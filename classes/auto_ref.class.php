@@ -52,4 +52,14 @@ class AutoRef
      return $entity_type_options; 
   }
 
+    public static function getBundle($entity_type = NULL){
+      $entity_info = entity_get_info($entity_type);
+      $bundles = array();
+      foreach ($entity_info['bundles'] as $bundle_name => $bundle_info) {
+        $bundles[$bundle_name] = $bundle_info['label'];
+      }
+      return $bundles;
+  }
+
+
 }

@@ -32,7 +32,7 @@ function auto_ref_field_widget_settings_form($field, $instance){
     $form['referenceField'] = array(
       '#type' => 'select',
       '#title' => t('Reference Field'),
-      '#option' => AutoRef::getAllEntity(),
+      '#option' => AutoRef::getBundle(),
       '#default_value' => $settings['referenceField'],
       '#required' => TRUE
     );
