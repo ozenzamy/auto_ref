@@ -14,7 +14,7 @@ function auto_ref_field_widget_info() {
               'multiple values' => FIELD_BEHAVIOR_DEFAULT,
           ),
           'settings' => array(
-               'referenceField' => NULL,
+               'referenceField' => 'cot_ref',
           )
         ),
     );    
