@@ -45,7 +45,7 @@ class AutoRef
 
 
   public static function getAllpropriete(){
-     $entity_type_options = entity_get_all_property_info();
+     $entity_type_options = entity_get_all_property_info('cotation');
      return array_keys($entity_type_options);
   }
 
