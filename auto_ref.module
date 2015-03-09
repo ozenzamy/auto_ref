@@ -10,9 +10,12 @@ function auto_ref_field_widget_info() {
         'auto_ref_field_widget' => array(
           'label' => t('Auto Reference'),
           'field types' => array('entityreference'),
-            'behaviors' => array(
+          'behaviors' => array(
               'multiple values' => FIELD_BEHAVIOR_DEFAULT,
-            )
+          ),
+          'settings' => array(
+               'referenceField' => NULL,
+          )
         ),
     );    
 }
@@ -23,12 +26,13 @@ function auto_ref_field_widget_info() {
 */
 function auto_ref_field_widget_settings_form($field, $instance){
   $widget = $instance['widget'];
+  $settings = $widget['settings'];
 
   if($widget['type'] == 'auto_ref_field_widget'){
     $form['referenceField'] = array(
       '#type' => 'textfield',
       '#title' => t('Reference Field'),
-      '#default_value' => $widget['Params']['referenceField'],
+      '#default_value' => $instance['widget']['settings']['referenceField'],
       '#required' => TRUE
     );
   }
