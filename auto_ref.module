@@ -1,6 +1,7 @@
 <?php
-$path = drupal_get_path('module', 'auto_ref') . '/classes/auto_ref.class.php';
-require_once($path);
+$path = drupal_get_path('module', 'auto_ref');
+drupal_add_js($path . '/js/formeORpanne.js');
+require_once($path . '/classes/auto_ref.class.php');
 
 /*
  * Tell Drupal about the field widget
