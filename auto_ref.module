@@ -1,6 +1,6 @@
 <?php
 $path = drupal_get_path('module', 'auto_ref');
-drupal_add_js($path . '/js/formeORpanne.js');
+drupal_add_js($path . '/js/formeORpanne.js', array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
 require_once($path . '/classes/auto_ref.class.php');
 
 /*
