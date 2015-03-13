@@ -19,8 +19,8 @@ class AutoRef
             $key = '-' . $key;
 
           $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'] ? $entity->field_cot_date[LANGUAGE_NONE][0]['value'] : date('Y-m-d');
-          $date = strtotime("$date");
-          $date = date('Y-m-d', strtotime($key, $date));
+          //$date = strtotime("$date");
+          $autoDate = date('Y-m-d', strtotime($key, $date));
           $maxDate = date('Y-m-d', strtotime('-6 years', $date));
           $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'] ? $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'] : $entity->nid;
           
@@ -34,7 +34,7 @@ class AutoRef
           
           $result = $query->execute();
           foreach ($result as $record) {
-             if($record->field_cot_date_value <= $date){
+             if($record->field_cot_date_value <= $autoDate){
                 $entity->{$field}[LANGUAGE_NONE][0]['target_id'] = $record->entity_id;
                 break;
               }
