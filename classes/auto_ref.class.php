@@ -19,7 +19,7 @@ class AutoRef
             $key = '-' . $key;
 
           $date = $entity->field_cot_date[LANGUAGE_NONE][0]['value'] ? $entity->field_cot_date[LANGUAGE_NONE][0]['value'] : date('Y-m-d');
-          //$date = strtotime("$date");
+          $date = strtotime("$date");
           $autoDate = date('Y-m-d', strtotime($key, $date));
           $maxDate = date('Y-m-d', strtotime('-6 years', $date));
           $ref = $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'] ? $entity->field_cot_ref[LANGUAGE_NONE][0]['target_id'] : $entity->nid;
