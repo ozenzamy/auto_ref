@@ -89,5 +89,5 @@ function auto_ref_field_widget_form(&$form,&$form_state,$field,$instance,$langco
 
 function auto_ref_entity_presave($entity, $type){
 
-	 AutoRef::autoRef_loader($entity);
+	 //AutoRef::autoRef_loader($entity);
 }
